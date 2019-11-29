@@ -1,10 +1,23 @@
-Deskripsi
+#PROJECT_51
+Konsep dari projek ini, berfokus pada beberapa kontrol dari sebuah robot, sebagai berikut:
+1. Mendeteksi objek dengan warna tertentu, dan membawa dan memberikan interaksi pada objek tersebut.
+2. Menghindari tabrakan, serta menyusuri suatu jalur.
+3. Mendeteksi robot lain, serta koordinasi antar robot.
+
+
+**Implementasi konsep**
+
+Konsep diatas di-implementasikan pada sebuah robot bola (dijelaskan dalam bagian *Objek*), jadi objek yang dimaksud diatas adalah sebuah bola yang memiliki warna terentu.
+Robot yang dibuat memiliki 2 jenis, pertama robot sebagai pengambil bola, kedua robot sebagai penendang bola. Robot penjaga bertugas untuk mengambil bola dengan warna biru dari kumpulan bola.
+Setelah bola yang dimaksud didapat, maka robot pertama harus membawa bola dan melewati labirin dan bertemu robot kedua di tengah-tengah labirin. Lalu robot kedua bertugas untuk menerima bola dari robot pertama.
+Ketika sudah diterima, robot kediua harus keluar dari labirin dan mencari gawang, kemudian menendang bolanya ke arah gawang.
+
 
 **Arena**
 
-1. Lapangan\
-Di lapangan yang berwarna hijau terdapat bola-bola dengan warna yang berbeda-beda diantaranya warna merah, hijau, dan biru dan robot A diminta untuk memlilah bola dengan warna biru.
-2. Maze\ 
+1. Lapangan
+Di lapangan terdapat bola-bola dengan warna yang berbeda-beda dan robot A diminta untuk memlilah bola dengan warna tertentu.
+2. Maze 
 Di maze yang berliku-liku dan terdapat suatu jalan buntu, robot A akan mencari robot B untuk kemudian menyalurkan bola tersebut kepada robot B. Di Maze terdapat sebuah gawang dan robot b akan memasukan bola tersebut ke gawang dengan bola yang telah diperoleh dari robot A.
 
 
