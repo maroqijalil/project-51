@@ -2,9 +2,9 @@ Deskripsi
 
 **Arena**
 
-1. Lapangan
-Di lapangan terdapat bola-bola dengan warna yang berbeda-beda dan robot A diminta untuk memlilah bola dengan warna tertentu.
-2. Maze 
+1. Lapangan\
+Di lapangan yang berwarna hijau terdapat bola-bola dengan warna yang berbeda-beda diantaranya warna merah, hijau, dan biru dan robot A diminta untuk memlilah bola dengan warna biru.
+2. Maze\ 
 Di maze yang berliku-liku dan terdapat suatu jalan buntu, robot A akan mencari robot B untuk kemudian menyalurkan bola tersebut kepada robot B. Di Maze terdapat sebuah gawang dan robot b akan memasukan bola tersebut ke gawang dengan bola yang telah diperoleh dari robot A.
 
 
