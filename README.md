@@ -1,10 +1,12 @@
 Deskripsi
 
-Arena
+**Arena**
 
-Arena yang akan dilalui oleh robot terbagi menjadi dua yaitu lapangan dan maze. Pada lapangan terdapat beberapa bola dengan warna yang berbeda-beda. Di tempat
-tersebut robot akan memilih bola sesuai kriteria yang telah ditentukan. Di maze robot akan mencari robot target menyusuri maze untuk memberikan bola yang telah diperoleh
-sebelumnya.
+1. Lapangan
+Di lapangan terdapat bola-bola dengan warna yang berbeda-beda dan robot A diminta untuk memlilah bola dengan warna tertentu.
+2. Maze 
+Di maze yang berliku-liku dan terdapat suatu jalan buntu, robot A akan mencari robot B untuk kemudian menyalurkan bola tersebut kepada robot B. Di Maze terdapat sebuah gawang dan robot b akan memasukan bola tersebut ke gawang dengan bola yang telah diperoleh dari robot A.
+
 
 **Objek**
 
