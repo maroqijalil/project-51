@@ -38,3 +38,9 @@ Di maze yang berliku-liku dan terdapat suatu jalan buntu, robot A akan mencari r
 3. Gawang
 *  Objek yang digunakan untuk menampung bola yang ditendang oleh robot di akhir maze.
 *  Gawang memiliki suatu ciri khas, e.g. warna cerah untuk membantu robot mendeteksi gawang tersebut.
+*  
+
+TUGAS 1 (20/11/2019):
+*  Membuat list apa saja yang harus dilakukan
+*  Tunjukkan apa yang telah dilakukan setiap asistensi
+
