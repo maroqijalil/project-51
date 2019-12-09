@@ -1,0 +1,639 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+  basicTimeStep 16
+  contactProperties [
+    ContactProperties {
+    }
+  ]
+}
+Viewpoint {
+  orientation 0.6319270331469925 -0.7065515915669537 -0.3185169904922565 5.043884434560824
+  position 0.9961578075921993 1.3101386866578504 0.6709352067387102
+}
+DirectionalLight {
+  direction 0 -1 0
+  intensity 2
+}
+Background {
+  skyColor [
+    0.533333 0.541176 0.521569
+  ]
+}
+Floor {
+  size 1 1
+}
+DEF WALL_1 Solid {
+  translation 0.5 0.05 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.0200046 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.1 0.98
+      }
+    }
+  ]
+  name "wall 1"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_1 Solid {
+  translation -0.5 0.05 0
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.0196078 1 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.1 0.98
+      }
+    }
+  ]
+  name "wall 1(1)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_3 Solid {
+  translation 0 0.05 -0.5
+  rotation 0 1 0 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "wall 3"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_3 Solid {
+  translation 3.67318e-06 0.05 0.5
+  rotation 0 1 0 1.5708
+  children [
+    USE WALL_SHAPE
+  ]
+  name "wall 3(1)"
+  boundingObject USE WALL_SHAPE
+}
+Robot {
+  translation 0.0978898 0.0398605 0.0992773
+  children [
+    Camera {
+      translation 0 0.0687349 0.0580814
+      rotation 5.982770917525721e-07 0.9877461514820662 0.15606902393495353 3.14159
+      children [
+        DEF DISPLAY_BOLA Display {
+          width 320
+          height 240
+        }
+        DEF DISPLAY_DINDING Display {
+          name "display1"
+          width 320
+          height 240
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.5 1
+          }
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      fieldOfView 1.5
+      width 320
+      height 240
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 0 0.0399939 1
+      }
+    }
+    Solid {
+      translation -0.03 0.02 0.075
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.02
+          }
+        }
+      ]
+      name "solid(3)"
+    }
+    Solid {
+      translation 0.03 0.02 0.075
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.02
+          }
+        }
+      ]
+      name "solid(3)"
+    }
+    DEF CAPIT_A SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "capit_a"
+        }
+      ]
+      endPoint Solid {
+        translation -0.03 0.009 0.061
+        children [
+          DEF capit_a Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF capit_a_b Box {
+              size 0.01 0.01 0.06
+            }
+          }
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 1 0 0
+            }
+            device [
+              LinearMotor {
+                name "dep_c_a"
+                acceleration 2
+              }
+            ]
+            endPoint Solid {
+              translation -0.01 -0.014 0.0335
+              children [
+                DEF dep_capit_a Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.029 0.04 0.005
+                  }
+                }
+              ]
+              boundingObject USE dep_capit_a
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE capit_a_b
+      }
+    }
+    DEF CAPIT_B SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "capit_b"
+        }
+      ]
+      endPoint Solid {
+        translation 0.03 0.009 0.061
+        children [
+          DEF capit_b Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF capit_b_b Box {
+              size 0.01 0.01 0.06
+            }
+          }
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 1 0 0
+            }
+            device [
+              LinearMotor {
+                name "dep_c_b"
+                acceleration 2
+              }
+            ]
+            endPoint Solid {
+              translation 0.01 -0.014 0.0335
+              children [
+                DEF dep_capit_b Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.029 0.04 0.005
+                  }
+                }
+              ]
+              boundingObject USE dep_capit_b
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE capit_b_b
+      }
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "angkat_s"
+          acceleration 3
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.016 0.025
+        rotation 1 0 0 0
+        children [
+          DEF angkat_slide Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.005 0.05
+            }
+          }
+          Transform {
+            translation 0 0 0.025
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.04 0.004 0.004
+                }
+              }
+            ]
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor 0 0 0.027
+            }
+            device [
+              RotationalMotor {
+                name "angkat_a"
+                acceleration 2
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.009999999999999992 0.043
+              rotation 1 0 0 0.5235979999999995
+              children [
+                DEF angkat_ang Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF angkat Box {
+                    size 0.04 0.001 0.04
+                  }
+                }
+              ]
+              name "solid(1)"
+              boundingObject USE angkat_ang
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE angkat_slide
+      }
+    }
+    DEF BODY_(NEW) Group {
+      children [
+        Solid {
+          translation 0 0 -0.05
+          children [
+            DEF B_BACK Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          name "solid(2)"
+          boundingObject USE B_BACK
+        }
+        Solid {
+          translation 0.03 0 0
+          children [
+            DEF B_SIDE1 Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.025 0.05 0.15
+              }
+            }
+          ]
+          name "solid(3)"
+          boundingObject USE B_SIDE1
+        }
+        Solid {
+          translation -0.03 0 0
+          children [
+            DEF B_SIDE2 Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.025 0.05 0.15
+              }
+            }
+          ]
+          name "solid(3)"
+          boundingObject USE B_SIDE2
+        }
+      ]
+    }
+    DEF WHEEL1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.7823484801148115e-12
+        anchor 0.05 -0.0110093 0.0400011
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.0110093 0.0400011
+        rotation 0.0004482543790157617 -0.00044825602364079013 -0.9999997990672542 4.7123851062339535
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0.305882 0.898039 0.25098
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.03
+              subdivision 24
+            }
+          }
+        ]
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.782343878082708e-12
+        anchor -0.05 -0.0110068 0.040001
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.0110068 0.040001
+        rotation 0.0003135351161971126 -0.000313536264442698 -0.999999901695366 4.712385208865442
+        children [
+          USE WHEEL
+        ]
+        name "solid(1)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL3 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.782575982654931e-12
+        anchor 0.05 -0.0110188 -0.0399973
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05 -0.0110188 -0.0399973
+        rotation 0.00044825375056487167 -0.00044825539884288336 -0.999999799067816 4.712385106233004
+        children [
+          USE WHEEL
+        ]
+        name "solid(2)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL4 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 6.78254070514156e-12
+        anchor -0.05 -0.011014 -0.0399976
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05 -0.011014 -0.0399976
+        rotation 0.0003135350410275106 -0.0003135361925115779 -0.9999999016954122 4.712385208863154
+        children [
+          USE WHEEL
+        ]
+        name "solid(3)"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF DS_RIGHT DistanceSensor {
+      translation -0.03 0.02 0.085
+      rotation 0 1 0 -2.0016896938995745
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_right"
+    }
+    DEF DS_LEFT DistanceSensor {
+      translation 0.03 0.02 0.085
+      rotation 0 1 0 -1.1398896938995748
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_left"
+    }
+    DEF DS_TOP DistanceSensor {
+      translation 1.2414e-08 0.01 0.075
+      rotation -0.12942797652506757 0.9831058216896892 0.12942697652524895 -1.5878353071795859
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_top"
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "sodok"
+          acceleration 0.8
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.05
+        children [
+          DEF sodok Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.02 0.05
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE sodok
+      }
+    }
+    DEF PELINDUNG_A SliderJoint {
+      jointParameters JointParameters {
+        axis 0.59 0 0.8
+      }
+      device [
+        LinearMotor {
+          name "pel_a"
+          acceleration 2
+        }
+      ]
+      endPoint Solid {
+        translation -0.0283628 -0.0105 0.0611995
+        rotation 0 1 0 -0.9162996938995747
+        children [
+          DEF pel_a Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.032 0.029 0.003
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE pel_a
+      }
+    }
+    DEF PELINDUNG_B SliderJoint {
+      jointParameters JointParameters {
+        axis -0.44 0 0.59
+      }
+      device [
+        LinearMotor {
+          name "pel_b"
+          acceleration 2
+        }
+      ]
+      endPoint Solid {
+        translation 0.0282628 -0.0105 0.0611995
+        rotation 0 1 0 0.9163
+        children [
+          DEF pel_b Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.032 0.029 0.003
+            }
+          }
+        ]
+        name "solid(3)"
+        boundingObject USE pel_b
+      }
+    }
+  ]
+  boundingObject USE B_BACK
+  physics Physics {
+    density -1
+    mass 1
+  }
+  controller "controller5"
+}
+Ball {
+  translation -0.252971 0.0925 -0.166124
+  color 0 0.0392157 1
+  radius 0.025
+}
+Ball {
+  translation -0.03 0.0325 -0.15
+  name "ball(1)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation -0.03 0.0625 -0.05
+  name "ball(2)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation -0.03 0.1225 -0.17
+  name "ball(3)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.1 0.1025 0.07
+  name "ball(4)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.05 0.1225 0.32
+  name "ball(5)"
+  color 1 0 0
+  radius 0.025
+}
