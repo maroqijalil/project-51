@@ -604,8 +604,16 @@ int main(int argc, char **argv) {
       capitm[1]->setPosition(p_b);
       sodoker->setPosition(p_a-0.02);
       
-      sodoker->setAcceleration(8.0);
+      sodoker->setAcceleration(15.0);
       sodoker->setPosition(p_a+0.02);
+      
+      if(p_bawah!=h-1||p_bawah==0){
+        sodoker->setPosition(p_a);
+        sodoker2->setPosition(p_a);
+        angkat->setPosition(p_a);
+        penanda_pel=0;
+        penanda_main=0;
+      }
     }
     
     wheels[0]->setVelocity(leftSpeed);
