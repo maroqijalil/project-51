@@ -201,9 +201,9 @@ void posisi(const unsigned char *image, int length, int *kiri, int *kanan, int*b
 }
 
 
-void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan) {
+void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan, int *kiri2, int *kanan2) {
   int penghitung, penghitung2, p, p2=0, pembanding, pembanding2=0, p_t;
-  *kiri=0; *kanan=0; 
+  *kiri=0; *kanan=0; *kiri2=0; *kanan2=0;
   
   Mat img = Mat(Size(w, h), CV_8UC4);
   img.data = (uchar *)image;
@@ -240,6 +240,10 @@ void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan
     if((p==1&&p_t==1)&&(penghitung!=0||penghitung2!=0)){
       *kiri=penghitung;
       *kanan=penghitung2;
+    }
+    if(penghitung!=0||penghitung2!=0){
+      if (p==1) *kiri2=penghitung;
+      if (p_t==1) *kanan2=penghitung2;
     }
   }
   
@@ -335,7 +339,7 @@ int main(int argc, char **argv) {
   int putar=0;
   int ukuran;
   int jalan=0, penanda_jalan=0;
-  int p_kiri, p_kanan, p_bawah, p_kiri_g, p_kanan_g;
+  int p_kiri, p_kanan, p_bawah, p_kiri_g, p_kanan_g, p_kiri_g2, p_kanan_g2;
   int penanda_main=0, ppm=0;
   double ban_kiri, ban_kanan;
   int penanda_bola;
@@ -526,7 +530,7 @@ int main(int argc, char **argv) {
         penanda_main=0;
       } else {
         p_kiri_g=0; p_kanan_g=0;
-        posisi_gawang(img, ukuran, &p_kiri_g, &p_kanan_g);
+        posisi_gawang(img, ukuran, &p_kiri_g, &p_kanan_g, &p_kiri_g2, &p_kanan_g2);
         
         leftSpeed = 3.0;
         rightSpeed = 3.0;
@@ -576,12 +580,16 @@ int main(int argc, char **argv) {
         if(p_kiri_g!=0 && p_kanan_g!=0){
           if(p_kiri_g-p_kanan_g<=2 && p_kiri_g-p_kanan_g>=-2){
             penanda_main = 3;
-          } else if(p_kiri_g<p_kanan_g){
+          } else if(p_kiri_g2<p_kanan_g2){
             leftSpeed = -1.0;
             rightSpeed = 1.0;
-          } else if(p_kiri_g>p_kanan_g){
+            ban_kiri=-2.0;
+            ban_kanan=2.0;
+          } else if(p_kiri_g2>p_kanan_g2){
             leftSpeed = 1.0;
             rightSpeed = -1.0;
+            ban_kiri=2.0;
+            ban_kanan=-2.0;
           }
           penanda_putar = 1;
         } else if (penanda_putar==0&&jalan==0){
@@ -590,7 +598,7 @@ int main(int argc, char **argv) {
           putar++;
           cout << putar << endl;
         }
-        cout << p_kiri_g << " " << p_kanan_g << endl;
+        cout << p_kiri_g2 << " " << p_kanan_g2 << endl;
         
       }
     
