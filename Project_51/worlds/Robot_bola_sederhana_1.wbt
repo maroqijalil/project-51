@@ -7,8 +7,8 @@ WorldInfo {
   ]
 }
 Viewpoint {
-  orientation 0.6319270331469925 -0.7065515915669537 -0.3185169904922565 5.043884434560824
-  position 0.9961578075921993 1.3101386866578504 0.6709352067387102
+  orientation 0.8876567212523703 -0.4276941391184209 -0.17071399643627544 5.438031770331404
+  position 0.4179101613248898 0.9631303439248964 1.0166442697232392
 }
 DirectionalLight {
   direction 0 -1 0
@@ -185,7 +185,9 @@ Robot {
           }
         ]
         name "solid(3)"
-        boundingObject USE capit_a_b
+        boundingObject Box {
+          size 0.01 0.01 0.06
+        }
       }
     }
     DEF CAPIT_B SliderJoint {
@@ -236,7 +238,9 @@ Robot {
           }
         ]
         name "solid(3)"
-        boundingObject USE capit_b_b
+        boundingObject Box {
+          size 0.01 0.01 0.06
+        }
       }
     }
     SliderJoint {
@@ -282,7 +286,7 @@ Robot {
             device [
               RotationalMotor {
                 name "angkat_a"
-                acceleration 2
+                acceleration 5
               }
             ]
             endPoint Solid {
@@ -371,8 +375,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05 -0.0110093 0.0400011
-        rotation 0.0004482543790157617 -0.00044825602364079013 -0.9999997990672542 4.7123851062339535
+        translation 0.050026712570406806 -0.010993258049337032 0.0399966263895951
+        rotation -0.006737134588592081 0.005967388634234107 0.9999594998250796 1.5704968227731873
         children [
           DEF WHEEL Shape {
             appearance PBRAppearance {
@@ -403,8 +407,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -0.05 -0.0110068 0.040001
-        rotation 0.0003135351161971126 -0.000313536264442698 -0.999999901695366 4.712385208865442
+        translation -0.05000676985201552 -0.011006375180138315 0.0399909682426862
+        rotation -0.00018972009758759826 -0.0004947765512995321 -0.9999998596012145 4.712878281713387
         children [
           USE WHEEL
         ]
@@ -425,8 +429,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation 0.05 -0.0110188 -0.0399973
-        rotation 0.00044825375056487167 -0.00044825539884288336 -0.999999799067816 4.712385106233004
+        translation 0.05001094560559266 -0.011013836344508861 -0.04000815749572132
+        rotation -0.006737271955332614 0.005967122357016555 0.999959500488583 1.570496634815146
         children [
           USE WHEEL
         ]
@@ -447,8 +451,8 @@ Robot {
         }
       ]
       endPoint Solid {
-        translation -0.05 -0.011014 -0.0399976
-        rotation 0.0003135350410275106 -0.0003135361925115779 -0.9999999016954122 4.712385208863154
+        translation -0.050029144777282375 -0.011031399827769113 -0.040002672514122116
+        rotation -0.00018953741437111079 -0.0004944562244500834 -0.9999998597942954 4.712877896725129
         children [
           USE WHEEL
         ]
@@ -595,10 +599,15 @@ Robot {
       }
     }
   ]
-  boundingObject USE B_BACK
+  boundingObject Box {
+    size 0.082 0.05 0.15
+  }
   physics Physics {
-    density -1
-    mass 1
+    density 1
+    mass 5
+    centerOfMass [
+      0 0 0
+    ]
   }
   controller "controller5"
 }
@@ -636,4 +645,44 @@ Ball {
   name "ball(5)"
   color 1 0 0
   radius 0.025
+}
+Solid {
+  translation -0.41 0 0
+  children [
+    Solid {
+      translation 0 0 -0.1
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.4
+            radius 0.015
+          }
+        }
+      ]
+      boundingObject USE tiang_a
+    }
+    Solid {
+      translation 0 0 0.1
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.4
+            radius 0.015
+          }
+        }
+      ]
+      name "solid(1)"
+      boundingObject USE tiang_a
+    }
+  ]
 }

@@ -280,14 +280,14 @@ int main(int argc, char **argv) {
     
     if(penanda_main==0){
     
-    if(penanda_pel==0){
-      pelm[0]->setPosition(p_b+0.03);
-      pelm[1]->setPosition(p_b+0.03);
-    }
-    
-    leftSpeed = 3.0;
-    rightSpeed = 3.0;
-    
+      if(penanda_pel==0){
+        pelm[0]->setPosition(p_b+0.03);
+        pelm[1]->setPosition(p_b+0.03);
+      }
+      
+      leftSpeed = 3.0;
+      rightSpeed = 3.0;
+      
       if(putar>=110){
         jalan = 100;
         penanda_putar=1;
@@ -306,8 +306,20 @@ int main(int argc, char **argv) {
       } else {
         for (int i = 0; i < 3; i++) {
           if (ds[i]->getValue() < 1000.0){
-            leftSpeed = ban_kiri;
-            rightSpeed = ban_kanan;
+            if(ds[0]->getValue() < 1000.0){
+              leftSpeed = -2.0;
+              rightSpeed = 2.0;
+              ban_kiri = -2.0;
+              ban_kanan = 2.0;
+            } else if(ds[1]->getValue() < 1000.0){
+              leftSpeed = 2.0;
+              rightSpeed = -2.0;
+              ban_kiri = 2.0;
+              ban_kanan = -2.0;
+            } else if(ds[2]->getValue() < 1000.0){
+              leftSpeed = ban_kiri;
+              rightSpeed = ban_kanan;
+            }
             penanda_putar=1;
             penanda_jalan=1;
             //jalan =1;
@@ -361,16 +373,15 @@ int main(int argc, char **argv) {
           }
         }
         penanda_putar = 1;
-      }else if(penanda_putar==0&&jalan==0){
+      } else if (penanda_putar==0&&jalan==0){
         leftSpeed = ban_kiri;
         rightSpeed = ban_kanan;
         putar++;
         cout << putar << endl;
       }
       cout << jalan << endl;
-    }
-    
-    if(penanda_main==1){
+
+    } else if(penanda_main==1){
       leftSpeed = 0.0;
       rightSpeed = 0.0;
       posisi(img, ukuran, &p_kiri, &p_kanan, &p_bawah);
