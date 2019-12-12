@@ -578,9 +578,7 @@ int main(int argc, char **argv) {
         }
         
         if(p_kiri_g!=0 && p_kanan_g!=0){
-          if(p_kiri_g-p_kanan_g<=2 && p_kiri_g-p_kanan_g>=-2){
-            penanda_main = 3;
-          } else if(p_kiri_g2<p_kanan_g2){
+          if(p_kiri_g2<p_kanan_g2){
             leftSpeed = -1.0;
             rightSpeed = 1.0;
             ban_kiri=-2.0;
@@ -590,6 +588,15 @@ int main(int argc, char **argv) {
             rightSpeed = -1.0;
             ban_kiri=2.0;
             ban_kanan=-2.0;
+          }
+          if(p_kiri_g-p_kanan_g<=2 && p_kiri_g-p_kanan_g>=-2){
+            penanda_main = 3;
+          } else if(p_kiri_g<p_kanan_g){
+            leftSpeed = -1.0;
+            rightSpeed = 1.0;
+          } else if(p_kiri_g>p_kanan_g){
+            leftSpeed = 1.0;
+            rightSpeed = -1.0;
           }
           penanda_putar = 1;
         } else if (penanda_putar==0&&jalan==0){
