@@ -2,10 +2,13 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.8531734220749311 -0.4517468768704524 -0.2608061945252524 5.11714552224263
-  position 1.821497432531397 4.384922865093215 -2.059189669130367
+  orientation 0.8174630638461384 0.500247258039745 0.28549399305589795 5.043211997788646
+  position -3.4078442813191185 8.14289655592492 0.753821671969244
 }
-TexturedBackground {
+Background {
+  skyColor [
+    0.333333 0.341176 0.32549
+  ]
 }
 TexturedBackgroundLight {
 }
@@ -428,7 +431,7 @@ DEF WALL_GUARD_6 Solid {
 DEF WALL_MAZE_2_1 Solid {
   translation 1.5 0.05 -2.25
   children [
-    Shape {
+    DEF dinding_22 Shape {
       appearance PBRAppearance {
         baseColor 0.541176 0.886275 0.203922
         roughness 1
@@ -440,7 +443,7 @@ DEF WALL_MAZE_2_1 Solid {
     }
   ]
   name "solid(42)"
-  boundingObject USE WALL_SHAPE
+  boundingObject USE dinding_22
 }
 DEF WALL_MAZE_2_2 Solid {
   translation -1 0.05 -2.25
@@ -791,6 +794,24 @@ Robot {
       endPoint Solid {
         translation -0.03 0.009 0.061
         children [
+          DEF DS_RIGHT DistanceSensor {
+            translation 0 0 0.036
+            rotation 0 1 0 -2.00169
+            scale 0.5 0.5 0.5
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.184314 0.596078 0.847059
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.01 0.01 0.01
+                }
+              }
+            ]
+            name "ds_right"
+          }
           DEF capit_a Shape {
             appearance PBRAppearance {
               roughness 1
@@ -844,6 +865,24 @@ Robot {
       endPoint Solid {
         translation 0.03 0.009 0.061
         children [
+          DEF DS_LEFT DistanceSensor {
+            translation 0 0 0.036
+            rotation 0 1 0 -1.13989
+            scale 0.5 0.5 0.5
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.184314 0.596078 0.847059
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.01 0.01 0.01
+                }
+              }
+            ]
+            name "ds_left"
+          }
           DEF capit_b Shape {
             appearance PBRAppearance {
               roughness 1
@@ -1105,42 +1144,6 @@ Robot {
         }
       }
     }
-    DEF DS_RIGHT DistanceSensor {
-      translation -0.03 0.02 0.085
-      rotation 0 1 0 -2.0016896938995745
-      scale 0.5 0.5 0.5
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.184314 0.596078 0.847059
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_right"
-    }
-    DEF DS_LEFT DistanceSensor {
-      translation 0.03 0.02 0.085
-      rotation 0 1 0 -1.1398896938995748
-      scale 0.5 0.5 0.5
-      children [
-        Shape {
-          appearance PBRAppearance {
-            baseColor 0.184314 0.596078 0.847059
-            roughness 1
-            metalness 0
-          }
-          geometry Box {
-            size 0.01 0.01 0.01
-          }
-        }
-      ]
-      name "ds_left"
-    }
     DEF DS_TOP DistanceSensor {
       translation 1.2414e-08 0.01 0.075
       rotation -0.12942797652506757 0.9831058216896892 0.12942697652524895 -1.5878353071795859
@@ -1287,12 +1290,13 @@ Robot {
       0 0 0
     ]
   }
-  controller "controller_m"
+  controller "final_controller"
 }
 Ball {
   translation -0.36609 0.0925 -4.72517
   color 0 0.0392157 1
   radius 0.025
+  mass 4
 }
 Ball {
   translation 0.632016 0.0325 -4.48215
