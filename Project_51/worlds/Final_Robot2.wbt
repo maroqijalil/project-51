@@ -1,0 +1,1544 @@
+#VRML_SIM R2019b utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.12500568561249242 0.9470186108383309 0.2958535605504662 3.882344061711146
+  position -4.805671061915202 4.399310088816938 -6.618499509329867
+}
+Background {
+  skyColor [
+    0.333333 0.341176 0.32549
+  ]
+}
+TexturedBackgroundLight {
+}
+DirectionalLight {
+  direction 0 -1 0
+}
+Floor {
+  size 4 13
+  tileSize 1 1
+}
+DEF WALL_1 Solid {
+  translation 0.25 0.05 3.5
+  rotation 0 1 0 1.5708003061004252
+  children [
+    DEF WALL_SHAPE Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 0.5
+      }
+    }
+  ]
+  name "solid(1)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_2 Solid {
+  translation -0.249999 0.05 4
+  rotation 0 1 0 -1.5708003061004252
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(2)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_3 Solid {
+  translation 0.5 0.05 3.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(3)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_4 Solid {
+  translation 1 0.05 3.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(4)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_5 Solid {
+  translation 0.75 0.05 3.5
+  rotation 0 1 0 1.5708003061004252
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(5)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_6 Solid {
+  translation 0.5 0.05 2.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(6)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_7 Solid {
+  translation 0.75 0.05 4
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(7)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_8 Solid {
+  translation 1.25 0.05 4
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(8)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_9 Solid {
+  translation 1.5 0.05 3.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(9)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_10 Solid {
+  translation 1.5 0.05 3.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(10)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_11 Solid {
+  translation -1 0.05 3.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(11)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_12 Solid {
+  translation -1 0.05 3.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(12)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_13 Solid {
+  translation -0.75 0.05 4
+  rotation 0 1 0 -1.5708003061004252
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(13)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_14 Solid {
+  translation -0.749999 0.05 3
+  rotation 0 1 0 -1.5708003061004252
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(14)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_15 Solid {
+  translation -0.25 0.05 3
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(15)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_16 Solid {
+  translation 1.5 0.05 2.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(16)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_17 Solid {
+  translation 1.5 0.05 1.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(17)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_18 Solid {
+  translation 0.75 0.05 2.5
+  rotation 0 1 0 1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(18)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_19 Solid {
+  translation 1.25 0.05 2.5
+  rotation 0 1 0 1.5708003061004252
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(19)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_20 Solid {
+  translation -1 0.05 2.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(20)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_21 Solid {
+  translation -1 0.05 2.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(21)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_22 Solid {
+  translation -1 0.05 1.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(22)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_23 Solid {
+  translation -0.49 0.05 1.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(23)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_24 Solid {
+  translation 1.5 0.05 2.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(24)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_25 Solid {
+  translation 0.25 0.05 2.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(25)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_26 Solid {
+  translation -0.25 0.05 2.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(26)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_27 Solid {
+  translation -0.25 0.05 1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(27)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_28 Solid {
+  translation -0.75 0.05 1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(28)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_29 Solid {
+  translation -0.25 0.05 2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(29)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_30 Solid {
+  translation 0.25 0.05 2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(30)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_31 Solid {
+  translation 0.75 0.05 2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(31)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_32 Solid {
+  translation 0.75 0.05 1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(32)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_33 Solid {
+  translation 1.25 0.05 1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(33)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_34 Solid {
+  translation -0.5 0.05 3.75
+  rotation 0 -1 0 3.37201e-06
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(40)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_GUARD_1 Solid {
+  translation 1.5 0.05 5.25
+  children [
+    DEF WALL_GUARD Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(34)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_2 Solid {
+  translation -1 0.05 5.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(35)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_3 Solid {
+  translation 0.25 0.05 6.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(36)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_4 Solid {
+  translation 0.24002 0.05 -6.01
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(37)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_5 Solid {
+  translation -1 0.05 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(38)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_6 Solid {
+  translation 1.5 0.05 0.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(39)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_MAZE_2_1 Solid {
+  translation 1.5 0.05 -2.25
+  children [
+    DEF dinding_22 Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(42)"
+  boundingObject USE dinding_22
+}
+DEF WALL_MAZE_2_2 Solid {
+  translation -1 0.05 -2.25
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(41)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_3 Solid {
+  translation 0.75 0.05 -1
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(43)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_4 Solid {
+  translation -0.75 0.05 -1
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(44)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_5 Solid {
+  translation -0.25 0.05 -1
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(45)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_6 Solid {
+  translation 1.25 0.05 -1
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(46)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_7 Solid {
+  translation 0.25 0.05 -2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(48)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_8 Solid {
+  translation 0.75 0.05 -2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(50)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_9 Solid {
+  translation 0.75 0.05 -2.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(54)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_10 Solid {
+  translation 1.25 0.05 -3
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(55)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_11 Solid {
+  translation -0.25 0.05 -1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(49)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_12 Solid {
+  translation -0.25 0.05 -1.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(51)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_13 Solid {
+  translation -0.75 0.05 -2
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(47)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_14 Solid {
+  translation -0.75 0.05 -2.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(52)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_15 Solid {
+  translation -0.25 0.05 -2.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(53)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_16 Solid {
+  translation -0.25 0.05 -3
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(56)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_17 Solid {
+  translation -0.25 0.05 -3.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(57)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_18 Solid {
+  translation 0.73 0.05 -3.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(59)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_19 Solid {
+  translation 1.23 0.05 -3.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(60)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_20 Solid {
+  translation -0.75 0.05 -3.5
+  rotation 0 1 0 -1.5707996938995747
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(58)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_21 Solid {
+  translation -0.01 0.05 -2.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(61)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_22 Solid {
+  translation 0.49 0.05 -2.74
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(62)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_23 Solid {
+  translation 0.49 0.05 -3.24
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(63)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_24 Solid {
+  translation 0.49 0.05 -1.24
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(64)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_25 Solid {
+  translation -0.01 0.05 -1.25
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(66)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_26 Solid {
+  translation 0.49 0.05 -1.74
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(65)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_MAZE_2_27 Solid {
+  translation 0.99 0.05 -1.75
+  children [
+    USE WALL_SHAPE
+  ]
+  name "solid(67)"
+  boundingObject USE WALL_SHAPE
+}
+DEF WALL_GUARD_28 Solid {
+  translation 1.5 0.05 -4.76
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(68)"
+  boundingObject USE WALL_GUARD
+}
+DEF WALL_GUARD_29 Solid {
+  translation -1 0.05 -4.76
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.541176 0.886275 0.203922
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.02 0.3 2.5
+      }
+    }
+  ]
+  name "solid(69)"
+  boundingObject USE WALL_GUARD
+}
+Robot {
+  translation 0.349795 0.0446529 -4.40805
+  rotation -0.06091197107884051 0.652173374346628 0.7556187011797838 0.014115230839092776
+  children [
+    Camera {
+      translation 0 0.0687349 0.0580814
+      rotation 5.982770917525721e-07 0.9877461514820662 0.15606902393495353 3.14159
+      children [
+        DEF DISPLAY_BOLA Display {
+          width 320
+          height 240
+        }
+        DEF DISPLAY_DINDING Display {
+          name "display1"
+          width 320
+          height 240
+        }
+        DEF DISPLAY_GAWANG Display {
+          name "display2"
+          width 320
+          height 240
+        }
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.5 0.5 1
+          }
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      fieldOfView 1.5
+      width 320
+      height 240
+      antiAliasing TRUE
+      recognition Recognition {
+        frameColor 0 0.0399939 1
+      }
+    }
+    Solid {
+      translation -0.03 0.02 0.075
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.02
+          }
+        }
+      ]
+      name "atas_capit"
+    }
+    Solid {
+      translation 0.03 0.02 0.075
+      children [
+        Shape {
+          appearance PBRAppearance {
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.02
+          }
+        }
+      ]
+      name "atas_capit2"
+    }
+    DEF CAPIT_A SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "capit_a"
+        }
+      ]
+      endPoint Solid {
+        translation -0.03 0.009 0.061
+        children [
+          DEF DS_RIGHT DistanceSensor {
+            translation 0 0 0.036
+            rotation 0 1 0 -2.00169
+            scale 0.5 0.5 0.5
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.184314 0.596078 0.847059
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.01 0.01 0.01
+                }
+              }
+            ]
+            name "ds_right"
+          }
+          DEF capit_a Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF capit_a_b Box {
+              size 0.01 0.01 0.06
+            }
+          }
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 1 0 0
+            }
+            device [
+              LinearMotor {
+                name "dep_c_a"
+                acceleration 2
+              }
+            ]
+            endPoint Solid {
+              translation -0.01 -0.014 0.0335
+              children [
+                DEF dep_capit_a Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.029 0.04 0.005
+                  }
+                }
+              ]
+              boundingObject USE dep_capit_a
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "capit_a"
+        boundingObject Box {
+          size 0.01 0.01 0.06
+        }
+        physics Physics {
+        }
+      }
+    }
+    DEF CAPIT_B SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "capit_b"
+        }
+      ]
+      endPoint Solid {
+        translation 0.03 0.009 0.061
+        children [
+          DEF DS_LEFT DistanceSensor {
+            translation 0 0 0.036
+            rotation 0 1 0 -1.13989
+            scale 0.5 0.5 0.5
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  baseColor 0.184314 0.596078 0.847059
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.01 0.01 0.01
+                }
+              }
+            ]
+            name "ds_left"
+          }
+          DEF capit_b Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry DEF capit_b_b Box {
+              size 0.01 0.01 0.06
+            }
+          }
+          SliderJoint {
+            jointParameters JointParameters {
+              axis 1 0 0
+            }
+            device [
+              LinearMotor {
+                name "dep_c_b"
+                acceleration 2
+              }
+            ]
+            endPoint Solid {
+              translation 0.01 -0.014 0.0335
+              children [
+                DEF dep_capit_b Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.029 0.04 0.005
+                  }
+                }
+              ]
+              boundingObject USE dep_capit_b
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "capit_b"
+        boundingObject Box {
+          size 0.01 0.01 0.06
+        }
+        physics Physics {
+        }
+      }
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "angkat_s"
+          acceleration 3
+        }
+      ]
+      endPoint Solid {
+        translation 0 -0.016 0.015
+        rotation 1 0 0 0
+        children [
+          DEF angkat_slide Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.005 0.05
+            }
+          }
+          Transform {
+            translation 0 0 0.025
+            children [
+              Shape {
+                appearance PBRAppearance {
+                  roughness 1
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.04 0.004 0.004
+                }
+              }
+            ]
+          }
+          HingeJoint {
+            jointParameters HingeJointParameters {
+              anchor 0 0 0.027
+            }
+            device [
+              RotationalMotor {
+                name "angkat_a"
+                acceleration 5
+              }
+            ]
+            endPoint Solid {
+              translation 0 -0.009999999999999992 0.043
+              rotation 1 0 0 0.5235979999999995
+              children [
+                DEF angkat_ang Shape {
+                  appearance PBRAppearance {
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry DEF angkat Box {
+                    size 0.04 0.001 0.04
+                  }
+                }
+              ]
+              name "solid(1)"
+              boundingObject USE angkat_ang
+              physics Physics {
+              }
+            }
+          }
+        ]
+        name "sodoker_bawah"
+        boundingObject USE angkat_slide
+        physics Physics {
+        }
+      }
+    }
+    DEF BODY_(NEW) Group {
+      children [
+        Solid {
+          translation 0 0 -0.05
+          children [
+            DEF B_BACK Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.05 0.05 0.05
+              }
+            }
+          ]
+          name "solid(2)"
+          model "body_back"
+          boundingObject USE B_BACK
+          physics Physics {
+          }
+        }
+        Solid {
+          translation 0.03 0 0
+          children [
+            DEF B_SIDE1 Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.025 0.05 0.15
+              }
+            }
+          ]
+          name "body_side1"
+          boundingObject USE B_SIDE1
+          physics Physics {
+          }
+        }
+        Solid {
+          translation -0.03 0 0
+          children [
+            DEF B_SIDE2 Shape {
+              appearance PBRAppearance {
+                roughness 1
+                metalness 0
+              }
+              geometry Box {
+                size 0.025 0.05 0.15
+              }
+            }
+          ]
+          name "body_side2"
+          boundingObject USE B_SIDE2
+          physics Physics {
+          }
+        }
+      ]
+    }
+    DEF WHEEL1 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 133.8238871605663
+        anchor 0.05 -0.0110093 0.0400011
+      }
+      device [
+        RotationalMotor {
+          name "wheel1"
+        }
+      ]
+      endPoint Solid {
+        translation 0.050026712570406806 -0.01100987011193727 0.040017744288615154
+        rotation -0.6260963715995973 0.6262372065303812 -0.4645753917577252 4.012463627952902
+        children [
+          DEF WHEEL Shape {
+            appearance PBRAppearance {
+              baseColor 0.305882 0.898039 0.25098
+              roughness 1
+              metalness 0
+            }
+            geometry Cylinder {
+              height 0.01
+              radius 0.03
+              subdivision 24
+            }
+          }
+        ]
+        name "wh1"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL2 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 114.62373852099873
+        anchor -0.05 -0.0110068 0.040001
+      }
+      device [
+        RotationalMotor {
+          name "wheel2"
+        }
+      ]
+      endPoint Solid {
+        translation -0.05000676985201552 -0.010996759273220292 0.040000979204423324
+        rotation -0.5688798026189207 0.5681946938669112 -0.5945843590557566 4.214303364828421
+        children [
+          USE WHEEL
+        ]
+        name "wh2"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL3 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 133.8239523556562
+        anchor 0.05 -0.0110188 -0.0399973
+      }
+      device [
+        RotationalMotor {
+          name "wheel3"
+        }
+      ]
+      endPoint Solid {
+        translation 0.05001094560559266 -0.011009944280052007 -0.03998929379532023
+        rotation -0.6261056253512257 0.6262465062064929 -0.46455038410027366 4.01242306787367
+        children [
+          USE WHEEL
+        ]
+        name "wh3"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF WHEEL4 HingeJoint {
+      jointParameters HingeJointParameters {
+        position 114.62382003641297
+        anchor -0.05 -0.011014 -0.0399976
+      }
+      device [
+        RotationalMotor {
+          name "wheel4"
+        }
+      ]
+      endPoint Solid {
+        translation -0.050029144777282375 -0.011009703230826331 -0.04001520744673658
+        rotation -0.5688959689270664 0.5682113915023382 -0.5945529338128867 4.21425697057124
+        children [
+          USE WHEEL
+        ]
+        name "wh4"
+        boundingObject USE WHEEL
+        physics Physics {
+        }
+      }
+    }
+    DEF DS_TOP DistanceSensor {
+      translation 1.2414e-08 0.01 0.075
+      rotation -0.12942797652506757 0.9831058216896892 0.12942697652524895 -1.5878353071795859
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_top"
+    }
+    DEF DS_S1 DistanceSensor {
+      translation 0.04001 0.02 0
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_s1"
+    }
+    DEF DS_S2 DistanceSensor {
+      translation -0.04001 0.02 0
+      rotation 0 1 0 3.14159
+      scale 0.5 0.5 0.5
+      children [
+        Shape {
+          appearance PBRAppearance {
+            baseColor 0.184314 0.596078 0.847059
+            roughness 1
+            metalness 0
+          }
+          geometry Box {
+            size 0.01 0.01 0.01
+          }
+        }
+      ]
+      name "ds_s2"
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+      }
+      device [
+        LinearMotor {
+          name "sodok"
+          acceleration 2
+        }
+      ]
+      endPoint Solid {
+        translation 0 0 0.05
+        children [
+          DEF sodok Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.02 0.05
+            }
+          }
+        ]
+        name "sodoker_atas"
+        boundingObject USE sodok
+        physics Physics {
+        }
+      }
+    }
+    DEF PELINDUNG_A SliderJoint {
+      jointParameters JointParameters {
+        axis 0.59 0 0.8
+      }
+      device [
+        LinearMotor {
+          name "pel_a"
+          acceleration 2
+        }
+      ]
+      endPoint Solid {
+        translation -0.0283628 -0.0105 0.0611995
+        rotation 0 1 0 -0.9162996938995747
+        children [
+          DEF pel_a Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.032 0.029 0.003
+            }
+          }
+        ]
+        name "pel1"
+        boundingObject USE pel_a
+        physics Physics {
+        }
+      }
+    }
+    DEF PELINDUNG_B SliderJoint {
+      jointParameters JointParameters {
+        axis -0.44 0 0.59
+      }
+      device [
+        LinearMotor {
+          name "pel_b"
+          acceleration 2
+        }
+      ]
+      endPoint Solid {
+        translation 0.0282628 -0.0105 0.0611995
+        rotation 0 1 0 0.9163
+        children [
+          DEF pel_b Shape {
+            appearance PBRAppearance {
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.032 0.029 0.003
+            }
+          }
+        ]
+        name "pel2"
+        boundingObject USE pel_b
+        physics Physics {
+        }
+      }
+    }
+  ]
+  boundingObject Box {
+    size 0.082 0.05 0.15
+  }
+  physics Physics {
+    density 1
+    mass 5
+    centerOfMass [
+      0 0 0
+    ]
+  }
+  controller "final_controller"
+}
+Ball {
+  translation 0.243038 0.0925 -4.07298
+  color 0 0.0392157 1
+  radius 0.025
+  mass 1
+  centerOfMass [
+    0 0 0
+  ]
+}
+Ball {
+  translation 0.632016 0.0325 -4.48215
+  name "ball(1)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.368879 0.0625 -4.68257
+  name "ball(2)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation -0.513918 0.1225 -4.47039
+  name "ball(3)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation -0.233691 0.1025 -4.48251
+  name "ball(4)"
+  color 1 0 0
+  radius 0.025
+}
+Ball {
+  translation -0.0978456 0.1225 -4.55816
+  name "ball(5)"
+  color 1 0 0
+  radius 0.025
+}
+DEF PENANDA_MAZESolid Solid {
+  translation 0.244075 1.11022e-16 -3.49809
+  rotation 0 1 0 1.5708
+  children [
+    Solid {
+      translation 0 0.1 -0.24
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      boundingObject USE tiang_a
+    }
+    Solid {
+      translation 0 0.1 0.24
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      name "solid(1)"
+      boundingObject USE tiang_a
+    }
+  ]
+}
+DEF PENANDA_MAZESolid Solid {
+  translation 0.24408 1.11022e-16 3.97191
+  rotation 0 1 0 1.5708
+  children [
+    Solid {
+      translation 0 0.1 -0.27
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      boundingObject USE tiang_a
+    }
+    Solid {
+      translation 0 0.1 0.28
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      name "solid(1)"
+      boundingObject USE tiang_a
+    }
+  ]
+  name "solid(73)"
+}
+Solid {
+  translation -0.951677 1.11022e-16 5.14753
+  children [
+    Solid {
+      translation 0 0.1 -0.1
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      boundingObject USE tiang_a
+    }
+    Solid {
+      translation 0 0.1 0.1
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      name "solid(1)"
+      boundingObject USE tiang_a
+    }
+    Solid {
+      translation 0 0.187 0
+      rotation 1 0 0 1.5708
+      children [
+        DEF tiang_a Shape {
+          appearance PBRAppearance {
+            baseColor 0.929412 0.831373 0
+            roughness 1
+            metalness 0
+          }
+          geometry Cylinder {
+            height 0.2
+            radius 0.015
+          }
+        }
+      ]
+      name "solid(2)"
+      boundingObject USE tiang_a
+    }
+  ]
+  name "solid(70)"
+}
+Oven {
+  translation -1.49951 0.34 -4.57972
+}
+Oven {
+  translation -1.49951 0.34 -4.14972
+  name "oven(1)"
+}
+HotPlate {
+  translation -1.52629 0.65 -4.02862
+}
+Cookware {
+  translation -1.53158 0.68 -4.19253
+}
+Sink {
+  translation -1.5825 0.72 -4.57582
+  rotation 0 1 0 -1.5707953071795862
+}
+Television {
+  translation 1.77218 1.5000000000000002 0.221165
+  rotation 0 1 0 -1.5707953071795862
+}
+FloorLight {
+  translation 0.269947 3.10862e-15 0.251608
+}
+Gnome {
+  translation -1.52581 -3.55271e-15 4.70072
+  rotation 0 1 0 -1.047195307179586
+}
+BunchOfSunFlowers {
+  translation 0.727842 1.77636e-15 -3.74347
+}
+BunchOfSunFlowers {
+  translation -0.205918 1.77636e-15 -3.78927
+  name "bunch of sunflowers(1)"
+}
+PottedTree {
+  translation -0.488147 0 4.50142
+}
+PottedTree {
+  translation 0.973914 -1.77636e-15 4.45776
+  name "potted tree(1)"
+}
+RobotisOp3 {
+  translation 0.247211 0.300017 5.99246
+  rotation -0.5773509358560258 0.577349935856137 0.577349935856137 2.09439
+}

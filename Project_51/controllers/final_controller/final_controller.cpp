@@ -261,6 +261,71 @@ void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan
 }
 
 
+void posisi_gawang_mer(const unsigned char *image, int length, int *kiri, int *kanan, int *kiri2, int *kanan2) {
+  int penghitung, penghitung2, p, p2_ki=0, p2_ka=0, pembanding, pembanding2=0, p_t;
+  *kiri=0; *kanan=0; *kiri2=0; *kanan2=0;
+  
+  Mat img = Mat(Size(w, h), CV_8UC4);
+  img.data = (uchar *)image;
+
+  Mat hsv = Mat(Size(w, h), CV_8UC3);
+  cvtColor(img, hsv, COLOR_BGR2HSV);
+  
+  Mat sementara_terfilt2 = Mat(Size(w, h), CV_8UC1);
+  Mat sementara_terfilt1 = Mat(Size(w, h), CV_8UC1);
+  Mat sementara_terfilt = Mat(Size(w, h), CV_8UC1);
+
+  Mat terfilt = Mat(Size(w, h), CV_8UC4);
+
+  for (int i = 0; i < h; ++i) {
+    for (int j = 0; j < w; ++j) {
+      terfilt.at<Vec4b>(i, j)[0] = 0;
+      terfilt.at<Vec4b>(i, j)[1] = 0;
+      terfilt.at<Vec4b>(i, j)[2] = 0;
+      terfilt.at<Vec4b>(i, j)[3] = 255;
+    }
+  }
+  
+  inRange(hsv, Scalar(131, 155, 84), Scalar(159, 255, 255), sementara_terfilt);
+  // inRange(hsv, Scalar(170, 70, 50), Scalar(180, 255, 255), sementara_terfilt2);
+
+  // sementara_terfilt = sementara_terfilt1 | sementara_terfilt2;
+  for (int i = 0; i < h; ++i) {
+    // cout << i << ".. " << endl;
+    penghitung=0; penghitung2=0; p=0; p_t=0; p2_ki=0; p2_ka=0;
+    for (int j = 0; j < w/2; ++j) {
+      // if (p==0) penghitung2++;
+      if (sementara_terfilt.at<uchar>(i, j) != 255 && p==0) {
+        penghitung=j;
+      }
+      if (sementara_terfilt.at<uchar>(i, j) != 255 && p==1) {
+        p2_ki++;
+      }
+      if(sementara_terfilt.at<uchar>(i, j) == 255) p=1;
+      if (sementara_terfilt.at<uchar>(i, (w-1)-j) != 255 && p_t==0){
+        penghitung2=j;
+      }
+      if (sementara_terfilt.at<uchar>(i, (w-1)-j) != 255 && p_t==1){
+        p2_ka++;
+      }
+      if(sementara_terfilt.at<uchar>(i, (w-1)-j) == 255) p_t=1;
+      // if(p==1) p2++;
+      // if(p_t==1)p2++; 
+    }
+    if((p==1&&p_t==1)&&(penghitung!=0||penghitung2!=0)&&p2_ki>=2&&p2_ka>=2){
+      *kiri=penghitung;
+      *kanan=penghitung2;
+    }
+    if(penghitung!=0||penghitung2!=0){
+      if (p==1) *kiri2=penghitung;
+      if (p_t==1) *kanan2=penghitung2;
+    }
+  }
+  
+  return;
+}
+
+
 int detect_dinding(const unsigned char *image, int length) {  
   Mat img = Mat(Size(w, h), CV_8UC4);
   img.data = (uchar *)image;
@@ -347,7 +412,9 @@ int main(int argc, char **argv) {
   double p_a=0, p_b=0;
   int ukuran;
   int p=0, p2=0, p3=0;
+  int p_baru=0;
   int penanda_putar=0;
+  int penanda_maze=0;
   int putar=0;
   int jalan=0, penanda_jalan=0;
   int p_kiri, p_kanan, p_bawah, p_kiri_g, p_kanan_g, p_kiri_g2, p_kanan_g2;
@@ -486,11 +553,16 @@ int main(int argc, char **argv) {
           if(p_kiri<p_kanan) penanda_bola = p_kanan;
           cout << p_kiri << " " << p_bawah << " " << p_kanan << endl;
           cout << ds[2]->getValue() << endl;
-          if (ds[2]->getValue()< 500.0&&p_bawah==h-1/*(w-(2*p_kiri+p_kanan))>-penanda_bola*/){
+          if (ds[2]->getValue()< 550.0){
+            pelm[0]->setPosition(p_b);
+            pelm[1]->setPosition(p_b);
+          }
+          if (ds[2]->getValue()< 450.0&&p_bawah==h-1/*(w-(2*p_kiri+p_kanan))>-penanda_bola*/){
             cout << "asdas" << endl;
             leftSpeed = 0.0;
             rightSpeed = 0.0;
             penanda_main=1;
+            avoidObstacleCounter=10;
           }
           penanda_putar = 1;
         }
@@ -517,63 +589,154 @@ int main(int argc, char **argv) {
       leftSpeed = 0.0;
       rightSpeed = 0.0;
       posisi(img, ukuran, &p_kiri, &p_kanan, &p_bawah);
-      pelm[0]->setPosition(p_b);
-      pelm[1]->setPosition(p_b);
       
-      capitm[0]->setPosition(p_b+0.03);
-      capitm[1]->setPosition(p_b+0.03);
-      dep_capitm[0]->setPosition(p_b+0.02);
-      dep_capitm[1]->setPosition(p_b-0.02);
+      capitm[0]->setPosition(p_b+0.05);
+      capitm[1]->setPosition(p_b+0.05);
+      
+      if (avoidObstacleCounter > 0) {
+        avoidObstacleCounter--;
+      }
+      
+      if (avoidObstacleCounter == 8) {
+        dep_capitm[0]->setPosition(p_b+0.02);
+        dep_capitm[1]->setPosition(p_b-0.02);
+      }
+      
       cout << p_kiri << " " << p_kanan << endl;
-      
-      sodoker2->setPosition(p_a+0.03);
-      angkat->setPosition(p_a-0.55);
-      penanda_main = 2;
+      if (avoidObstacleCounter == 0) {
+        capitm[0]->setPosition(p_b+0.03);
+        capitm[1]->setPosition(p_b+0.03);
+        sodoker2->setPosition(p_a+0.04);
+        angkat->setPosition(p_a-0.55);
+        penanda_main = 2;
+      }
     
     } else if(penanda_main==2){
-    
-      p2=0; p3=0;
-      
-      leftSpeed = 3.0;
-      rightSpeed = 3.0;
-      
-      for (int i = 3; i < 5; i++) {
-        if (ds[i]->getValue() < 1000.0){
-          penanda_jalan=1;
-          p=i;
-          p2++;
-        }
-      }
-      
-      for (int i = 0; i < 2; i++) {
-        if (ds[i]->getValue() < 1000.0){
-          leftSpeed = ban_kiri;
-          rightSpeed = ban_kanan;
-          p2++;
-          p=0;
-          p3=1;
-          //jalan =1;
-        }
-      }
-      
-      if(p2==0&&p3==0){
-        if(p==4){
-          leftSpeed = -2.0;
-          rightSpeed = 2.0;
-        } else if(p==3){
-          leftSpeed = 2.0;
-          rightSpeed = -2.0;
-        }
-      }
-      
-      cout << leftSpeed << " " << rightSpeed << endl;
       
       if(p_bawah!=h-1||p_bawah==0){
-        sodoker->setPosition(p_a);
         sodoker2->setPosition(p_a);
         angkat->setPosition(p_a);
         penanda_pel=0;
         penanda_main=0;
+        penanda_maze=0;
+      } else {
+        p_kiri_g=0; p_kanan_g=0;
+        p2=0; p3=0;
+        
+        leftSpeed = 3.0;
+        rightSpeed = 3.0;
+        
+        if(penanda_maze==0){
+          posisi_gawang(img, ukuran, &p_kiri_g, &p_kanan_g, &p_kiri_g2, &p_kanan_g2);
+          if(p_kiri_g!=0 && p_kanan_g!=0){
+            
+            if(p_kiri_g<p_kanan_g){
+              leftSpeed = -1.0;
+              rightSpeed = 1.0;
+              penanda_putar = 1;
+            } else if(p_kiri_g>p_kanan_g){
+              leftSpeed = 1.0;
+              rightSpeed = -1.0;
+              penanda_putar = 1;
+            }
+          
+            if(p_kiri_g-p_kanan_g<=5 && p_kiri_g-p_kanan_g>=-5){
+              if(p_kiri_g>120&&p_kanan_g>120){
+                leftSpeed = 3.0;
+                rightSpeed = 3.0;
+                penanda_putar = 1; p=1;
+              } else if(p_kiri_g<=120||p_kanan_g<=120){
+                penanda_maze = 1;
+                penanda_putar = 1;
+              }
+            }
+            
+          }
+          if (penanda_putar==0&&jalan==0){
+            leftSpeed = ban_kiri;
+            rightSpeed = ban_kanan;
+            putar++;
+            cout << putar << endl;
+          }
+          cout << jalan << endl;
+          cout << p_kiri_g2 << " " << p_kanan_g2 << ".. " << p_kiri_g << " " << p_kanan_g << endl;
+          
+        } else if(penanda_maze==1){
+          p_kiri_g=0; p_kanan_g=0;
+          posisi_gawang(img, ukuran, &p_kiri_g, &p_kanan_g, &p_kiri_g2, &p_kanan_g2);
+          
+          if(p_kiri_g!=0 && p_kanan_g!=0&&p_baru!=0){
+            cout << "sadada" << endl;
+            
+            if(p_kiri_g<p_kanan_g){
+              leftSpeed = -1.0;
+              rightSpeed = 1.0;
+              penanda_putar = 1;
+            } else if(p_kiri_g>p_kanan_g){
+              leftSpeed = 1.0;
+              rightSpeed = -1.0;
+              penanda_putar = 1;
+            }
+          
+            if(p_kiri_g-p_kanan_g<=15 && p_kiri_g-p_kanan_g>=-15){
+              if(p_kiri_g>120&&p_kanan_g>120){
+                leftSpeed = 3.0;
+                rightSpeed = 3.0;
+                penanda_putar = 1; p=1;
+              } else if(p_kiri_g<=120||p_kanan_g<=120){
+                leftSpeed = 3.0;
+                rightSpeed = 3.0;
+                p_baru = 2;
+              }
+            }
+            
+          }
+          
+          if(p_kiri_g2==0 && p_kanan_g2==0&&p_baru==2){
+            p_baru = 3;          
+          
+          }
+          
+          if(p_baru!=3&&p_baru!=2){
+            for (int i = 3; i < 5; i++) {
+              if (ds[i]->getValue() < 1000.0){
+                penanda_jalan=1;
+                p=i;
+                p2++;
+                p_baru=1;
+              }
+            }
+            
+            for (int i = 0; i < 2; i++) {
+              if (ds[i]->getValue() < 1000.0){
+                leftSpeed = ban_kiri;
+                rightSpeed = ban_kanan;
+                p2++;
+                p=0;
+                p3=1;
+                //jalan =1;
+              }
+            }
+            
+            if(p2==0&&p3==0){
+              if(p==4){
+                leftSpeed = -2.0;
+                rightSpeed = 2.0;
+              } else if(p==3){
+                leftSpeed = 2.0;
+                rightSpeed = -2.0;
+              }
+            }
+            
+            cout << leftSpeed << " " << rightSpeed << endl;
+          }
+          if(p_baru==3){
+            penanda_main = 3;
+            jalan = 80;
+          }
+          cout << p_kiri_g << " " << p_kanan_g << endl;
+        }
+        
       }
     
     } else if(penanda_main==3){
@@ -643,11 +806,12 @@ int main(int argc, char **argv) {
           
           if(p_kiri_g-p_kanan_g<=5 && p_kiri_g-p_kanan_g>=-5){
             if(p_kiri_g>120&&p_kanan_g>120){
-              leftSpeed = 1.0;
-              rightSpeed = 1.0;
+              leftSpeed = 2.0;
+              rightSpeed = 2.0;
               penanda_putar = 1; p=1;
             } else if(p_kiri_g<=120||p_kanan_g<=120){
               penanda_main = 4;
+              avoidObstacleCounter=20;
               leftSpeed = 0.0;
               rightSpeed = 0.0;
               penanda_putar = 1;
@@ -686,11 +850,14 @@ int main(int argc, char **argv) {
       sodoker->setAcceleration(2.0);
       sodoker->setPosition(p_a-0.02);
       
-      sodoker->setAcceleration(20.0);
-      sodoker->setPosition(p_a+0.02);
+      if (avoidObstacleCounter > 0) {
+        avoidObstacleCounter--;
+      }
       
-      for(int i=0;i<1000000;i++);
-      
+      if (avoidObstacleCounter == 8) {
+        sodoker->setAcceleration(20.0);
+        sodoker->setPosition(p_a+0.02);
+      }
       if(p_bawah!=h-1||p_bawah==0){
         sodoker->setPosition(p_a);
         sodoker2->setPosition(p_a);
