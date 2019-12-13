@@ -1,15 +1,15 @@
 Webots Project File version R2019b
 perspectives: 000000ff00000000fd00000003000000000000000000000000fc0100000001fb0000001a0044006f00630075006d0065006e0074006100740069006f006e0000000000ffffffff0000006900ffffff0000000100000228000001effc0200000001fb0000001400540065007800740045006400690074006f00720100000016000001ef0000008900ffffff00000003000005560000007dfc0100000001fb0000000e0043006f006e0073006f006c00650100000000000005560000006900ffffff0000032c000001ef00000001000000020000000100000008fc00000000
 simulationViewPerspectives: 000000ff000000010000000200000100000003380100000002010000000100
-sceneTreePerspectives: 000000ff000000010000000200000120000000fa0100000002010000000200
+sceneTreePerspectives: 000000ff0000000100000002000000c0000000fa0100000002010000000200
 maximizedDockId: -1
 centralWidgetVisible: 1
 selectionDisabled: 0
 viewpointLocked: 0
 orthographicViewHeight: 1
-textFiles: 0 "controllers/controller6/controller6.cpp" "controllers/controller5/controller5.cpp" "controllers/controller4/controller4.cpp"
+textFiles: 2 "controllers/controller6/controller6.cpp" "controllers/controller5/controller5.cpp" "controllers/controller_m/controller_m.cpp"
 globalOptionalRendering: DistanceSensorRays
-renderingDevicePerspectives: robot:display2;1;0.375;0;0
-renderingDevicePerspectives: robot:display1;1;0.375;0.779783;0.788991
-renderingDevicePerspectives: robot:camera;1;0.378125;0.777978;0
-renderingDevicePerspectives: robot:display;1;0.375;0;0.788991
+renderingDevicePerspectives: robot:display2;1;0.333333;0.803851;0.811927
+renderingDevicePerspectives: robot:display1;1;0.333333;0;0.811927
+renderingDevicePerspectives: robot:camera;1;0.33125;0;0
+renderingDevicePerspectives: robot:display;1;0.333333;0.803851;0
