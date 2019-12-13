@@ -202,7 +202,7 @@ void posisi(const unsigned char *image, int length, int *kiri, int *kanan, int*b
 
 
 void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan, int *kiri2, int *kanan2) {
-  int penghitung, penghitung2, p, p2=0, pembanding, pembanding2=0, p_t;
+  int penghitung, penghitung2, p, p2_ki=0, p2_ka=0, pembanding, pembanding2=0, p_t;
   *kiri=0; *kanan=0; *kiri2=0; *kanan2=0;
   
   Mat img = Mat(Size(w, h), CV_8UC4);
@@ -227,17 +227,27 @@ void posisi_gawang(const unsigned char *image, int length, int *kiri, int *kanan
   inRange(hsv, Scalar(20, 100, 100), Scalar(30, 255, 255), sementara_terfilt);
   for (int i = 0; i < h; ++i) {
     // cout << i << ".. " << endl;
-    penghitung=0; penghitung2=0; p=0; p_t=0;
+    penghitung=0; penghitung2=0; p=0; p_t=0; p2_ki=0; p2_ka=0;
     for (int j = 0; j < w/2; ++j) {
       // if (p==0) penghitung2++;
       if (sementara_terfilt.at<uchar>(i, j) != 255 && p==0) {
         penghitung=j;
-      } else if(sementara_terfilt.at<uchar>(i, j) == 255) p=1;
+      }
+      if (sementara_terfilt.at<uchar>(i, j) != 255 && p==1) {
+        p2_ki++;
+      }
+      if(sementara_terfilt.at<uchar>(i, j) == 255) p=1;
       if (sementara_terfilt.at<uchar>(i, (w-1)-j) != 255 && p_t==0){
         penghitung2=j;
-      } else if(sementara_terfilt.at<uchar>(i, (w-1)-j) == 255) p_t=1;
+      }
+      if (sementara_terfilt.at<uchar>(i, (w-1)-j) != 255 && p_t==1){
+        p2_ka++;
+      }
+      if(sementara_terfilt.at<uchar>(i, (w-1)-j) == 255) p_t=1;
+      // if(p==1) p2++;
+      // if(p_t==1)p2++; 
     }
-    if((p==1&&p_t==1)&&(penghitung!=0||penghitung2!=0)){
+    if((p==1&&p_t==1)&&(penghitung!=0||penghitung2!=0)&&p2_ki>=2&&p2_ka>=2){
       *kiri=penghitung;
       *kanan=penghitung2;
     }
@@ -284,37 +294,37 @@ int detect_dinding(const unsigned char *image, int length) {
 }
 
 
-int detect_gawang(const unsigned char *image, int length) {  
-  Mat img = Mat(Size(w, h), CV_8UC4);
-  img.data = (uchar *)image;
+// int detect_gawang(const unsigned char *image, int length) {  
+  // Mat img = Mat(Size(w, h), CV_8UC4);
+  // img.data = (uchar *)image;
 
-  Mat hsv = Mat(Size(w, h), CV_8UC3);
-  cvtColor(img, hsv, COLOR_BGR2HSV);
+  // Mat hsv = Mat(Size(w, h), CV_8UC3);
+  // cvtColor(img, hsv, COLOR_BGR2HSV);
 
-  Mat sementara_terfilt = Mat(Size(w, h), CV_8UC1);
+  // Mat sementara_terfilt = Mat(Size(w, h), CV_8UC1);
 
-  Mat terfilt = Mat(Size(w, h), CV_8UC4);
+  // Mat terfilt = Mat(Size(w, h), CV_8UC4);
 
-  for (int i = 0; i < h; ++i) {
-    for (int j = 0; j < w; ++j) {
-      terfilt.at<Vec4b>(i, j)[0] = 0;
-      terfilt.at<Vec4b>(i, j)[1] = 0;
-      terfilt.at<Vec4b>(i, j)[2] = 0;
-      terfilt.at<Vec4b>(i, j)[3] = 255;
-    }
-  }
+  // for (int i = 0; i < h; ++i) {
+    // for (int j = 0; j < w; ++j) {
+      // terfilt.at<Vec4b>(i, j)[0] = 0;
+      // terfilt.at<Vec4b>(i, j)[1] = 0;
+      // terfilt.at<Vec4b>(i, j)[2] = 0;
+      // terfilt.at<Vec4b>(i, j)[3] = 255;
+    // }
+  // }
 
-  inRange(hsv, Scalar(20, 100, 100), Scalar(30, 255, 255), sementara_terfilt);
-  for (int i = 0; i < h; ++i) {
-    for (int j = 0; j < w; ++j) {
-      if (sementara_terfilt.at<uchar>(i, j) == 255) {
-        return 1;
-      }
-    }
-  }
+  // inRange(hsv, Scalar(20, 100, 100), Scalar(30, 255, 255), sementara_terfilt);
+  // for (int i = 0; i < h; ++i) {
+    // for (int j = 0; j < w; ++j) {
+      // if (sementara_terfilt.at<uchar>(i, j) == 255) {
+        // return 1;
+      // }
+    // }
+  // }
  
-  return 0;
-}
+  // return 0;
+// }
 
 
 int main(int argc, char **argv) {
@@ -335,9 +345,10 @@ int main(int argc, char **argv) {
   Motor *pelm[2];
   
   double p_a=0, p_b=0;
+  int ukuran;
+  int p=0;
   int penanda_putar=0;
   int putar=0;
-  int ukuran;
   int jalan=0, penanda_jalan=0;
   int p_kiri, p_kanan, p_bawah, p_kiri_g, p_kanan_g, p_kiri_g2, p_kanan_g2;
   int penanda_main=0, ppm=0;
@@ -353,6 +364,7 @@ int main(int argc, char **argv) {
   double leftSpeed;
   double rightSpeed;
   int penanda_pel=0;
+  int maju=0;
   
   sodoker = robot->getMotor("sodok");
   cam = robot->getCamera("camera");
@@ -427,27 +439,15 @@ int main(int argc, char **argv) {
       } else {
         for (int i = 0; i < 3; i++) {
           if (ds[i]->getValue() < 1000.0){
-            if(ds[0]->getValue() < 1000.0){
-              leftSpeed = -2.0;
-              rightSpeed = 2.0;
-              ban_kiri = -2.0;
-              ban_kanan = 2.0;
-            } else if(ds[1]->getValue() < 1000.0){
-              leftSpeed = 2.0;
-              rightSpeed = -2.0;
-              ban_kiri = 2.0;
-              ban_kanan = -2.0;
-            } else if(ds[2]->getValue() < 1000.0){
-              leftSpeed = ban_kiri;
-              rightSpeed = ban_kanan;
-            }
+            leftSpeed = ban_kiri;
+            rightSpeed = ban_kanan;
             penanda_putar=1;
             penanda_jalan=1;
             //jalan =1;
           } else {
             penanda_jalan=0;
             penanda_putar=0;
-          } 
+          }
           if(i<=1){
             dep_capitm[i]->setPosition(p_b);
             capitm[i]->setPosition(p_b);
@@ -505,6 +505,14 @@ int main(int argc, char **argv) {
       cout << jalan << endl;
 
     } else if(penanda_main==1){
+    
+      p=0;
+      penanda_putar=0;
+      putar=0;
+      jalan=0, penanda_jalan=0;
+      ban_kiri = 2.0;
+      ban_kanan = -2.0;
+      
       leftSpeed = 0.0;
       rightSpeed = 0.0;
       posisi(img, ukuran, &p_kiri, &p_kanan, &p_bawah);
@@ -543,30 +551,17 @@ int main(int argc, char **argv) {
         
         if(jalan>0&&penanda_jalan==0){
           jalan--;
-          if(jalan==0){
-            penanda_putar=0;
-          }
+          if(jalan==0) penanda_putar=0;
         }
         
-        if (avoidObstacleCounter > 0) {
-          avoidObstacleCounter--;
-        } else {
-          for (int i = 0; i < 3; i++) {
+        // if (avoidObstacleCounter > 0) {
+          // avoidObstacleCounter--;
+        // } else {
+          p=0;
+          for (int i = 0; i < 2; i++) {
             if (ds[i]->getValue() < 1000.0){
-              if(ds[0]->getValue() < 1000.0){
-                leftSpeed = -2.0;
-                rightSpeed = 2.0;
-                ban_kiri = -2.0;
-                ban_kanan = 2.0;
-              } else if(ds[1]->getValue() < 1000.0){
-                leftSpeed = 2.0;
-                rightSpeed = -2.0;
-                ban_kiri = 2.0;
-                ban_kanan = -2.0;
-              } else if(ds[2]->getValue() < 1000.0){
-                leftSpeed = ban_kiri;
-                rightSpeed = ban_kanan;
-              }
+              leftSpeed = ban_kiri;
+              rightSpeed = ban_kanan;
               penanda_putar=1;
               penanda_jalan=1;
               //jalan =1;
@@ -575,37 +570,61 @@ int main(int argc, char **argv) {
               penanda_putar=0;
             }
           }
-        }
+        //}
         
         if(p_kiri_g!=0 && p_kanan_g!=0){
-          if(p_kiri_g2<p_kanan_g2){
+        
+          // if(p_kiri_g2<p_kanan_g2){
+            // leftSpeed = -1.0;
+            // rightSpeed = 1.0;
+            // ban_kiri=-2.0;
+            // ban_kanan=2.0;
+            // penanda_putar = 1;
+          // } else if(p_kiri_g2>p_kanan_g2){
+            // leftSpeed = 1.0;
+            // rightSpeed = -1.0;
+            // ban_kiri=2.0;
+            // ban_kanan=-2.0;
+            // penanda_putar = 1;
+          // }
+          
+          // if(maju>0){
+            // leftSpeed = 2.0;
+            // rightSpeed = 2.0;
+            // maju--;
+          // } else {
+          
+          if(p_kiri_g-p_kanan_g<=5 && p_kiri_g-p_kanan_g>=-5){
+            if(p_kiri_g>120&&p_kanan_g>120){
+              leftSpeed = 1.0;
+              rightSpeed = 1.0;
+              penanda_putar = 1; p=1;
+            } else if(p_kiri_g<=120||p_kanan_g<=120){
+              penanda_main = 3;
+              leftSpeed = 0.0;
+              rightSpeed = 0.0;
+              penanda_putar = 1;
+            }
+          } else if(p_kiri_g-p_kanan_g>=-15&&p_kiri_g-p_kanan_g<-5){
             leftSpeed = -1.0;
             rightSpeed = 1.0;
-            ban_kiri=-2.0;
-            ban_kanan=2.0;
-          } else if(p_kiri_g2>p_kanan_g2){
+            penanda_putar = 1;
+          } else if(p_kiri_g-p_kanan_g<=15&&p_kiri_g-p_kanan_g>5){
             leftSpeed = 1.0;
             rightSpeed = -1.0;
-            ban_kiri=2.0;
-            ban_kanan=-2.0;
+            penanda_putar = 1;
           }
-          if(p_kiri_g-p_kanan_g<=2 && p_kiri_g-p_kanan_g>=-2){
-            penanda_main = 3;
-          } else if(p_kiri_g<p_kanan_g){
-            leftSpeed = -1.0;
-            rightSpeed = 1.0;
-          } else if(p_kiri_g>p_kanan_g){
-            leftSpeed = 1.0;
-            rightSpeed = -1.0;
-          }
-          penanda_putar = 1;
-        } else if (penanda_putar==0&&jalan==0){
+          
+          // }
+        }
+        if (penanda_putar==0&&jalan==0){
           leftSpeed = ban_kiri;
           rightSpeed = ban_kanan;
           putar++;
           cout << putar << endl;
         }
-        cout << p_kiri_g2 << " " << p_kanan_g2 << endl;
+        cout << jalan << endl;
+        cout << p_kiri_g2 << " " << p_kanan_g2 << ".. " << p_kiri_g << " " << p_kanan_g << endl;
         
       }
     
@@ -617,10 +636,13 @@ int main(int argc, char **argv) {
       dep_capitm[1]->setPosition(p_b);
       capitm[0]->setPosition(p_b);
       capitm[1]->setPosition(p_b);
+      sodoker->setAcceleration(2.0);
       sodoker->setPosition(p_a-0.02);
       
-      sodoker->setAcceleration(15.0);
+      sodoker->setAcceleration(20.0);
       sodoker->setPosition(p_a+0.02);
+      
+      for(int i=0;i<1000000;i++);
       
       if(p_bawah!=h-1||p_bawah==0){
         sodoker->setPosition(p_a);
@@ -629,6 +651,7 @@ int main(int argc, char **argv) {
         penanda_pel=0;
         penanda_main=0;
       }
+      
     }
     
     wheels[0]->setVelocity(leftSpeed);
