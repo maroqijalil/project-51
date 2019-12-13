@@ -2,8 +2,8 @@
 WorldInfo {
 }
 Viewpoint {
-  orientation 0.8174630638461384 0.500247258039745 0.28549399305589795 5.043211997788646
-  position -3.4078442813191185 8.14289655592492 0.753821671969244
+  orientation -0.07825342582932711 0.9638989266721615 0.2545098436332646 2.541335007802108
+  position 7.406500396988733 7.699941535275683 -10.779644264206532
 }
 Background {
   skyColor [
@@ -15,13 +15,6 @@ TexturedBackgroundLight {
 Floor {
   size 4 13
   tileSize 1 1
-}
-SolidBox {
-  translation -0.277324 0.04890128 4.36388
-  rotation -0.052606458536305245 0.8443687042845701 0.533173566247488 3.70471092771971e-16
-  size 0.14 0.1 0.2
-  physics Physics {
-  }
 }
 DEF WALL_1 Solid {
   translation 0.25 0.05 3.5
@@ -1293,43 +1286,123 @@ Robot {
   controller "final_controller"
 }
 Ball {
-  translation -0.36609 0.0925 -4.72517
+  translation 0.0873304 0.0925 -5.69415
   color 0 0.0392157 1
   radius 0.025
   mass 4
 }
 Ball {
-  translation 0.632016 0.0325 -4.48215
-  name "ball(1)"
-  color 1 0 0
+  translation 0.686037 0.0625 -5.06565
+  name "ball(7)"
+  color 1 1 0
   radius 0.025
 }
 Ball {
-  translation 0.368879 0.0625 -4.68257
+  translation -0.181855 0.0625 -5.40213
   name "ball(2)"
-  color 1 0 0
+  color 1 1 0
   radius 0.025
 }
 Ball {
-  translation -0.513918 0.1225 -4.47039
+  translation 0.339895 0.0625 -5.31682
   name "ball(3)"
+  color 0 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.286647 0.0625 -5.53548
+  name "ball(15)"
+  color 0 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.0603812 0.0625 -5.41548
+  name "ball(1)"
+  color 0 0 0
+  radius 0.025
+}
+Ball {
+  translation 0.232478 0.0625 -4.61985
+  name "ball(8)"
+  color 0 1 0
+  radius 0.025
+}
+Ball {
+  translation 0.769757 0.0625 -4.70801
+  name "ball(9)"
+  color 0 1 0
+  radius 0.025
+}
+Ball {
+  translation -0.120838 0.0625 -4.89357
+  name "ball(6)"
+  color 0 1 0
+  radius 0.025
+}
+Ball {
+  translation -0.0050237 0.0625 -5.08289
+  name "ball(16)"
+  color 1 1 1
+  radius 0.025
+}
+Ball {
+  translation 0.23929 0.0625 -4.93408
+  name "ball(17)"
+  color 1 1 1
+  radius 0.025
+}
+Ball {
+  translation 0.241315 0.0625 -5.4232
+  name "ball(18)"
+  color 1 1 1
+  radius 0.025
+}
+Ball {
+  translation 0.555827 0.0625 -5.28592
+  name "ball(10)"
+  color 0 1 0
+  radius 0.025
+}
+Ball {
+  translation -0.0363219 0.0625 -5.56733
+  name "ball(11)"
   color 1 0 0
   radius 0.025
 }
 Ball {
-  translation -0.233691 0.1025 -4.48251
+  translation 0.122424 0.0625 -4.74145
+  name "ball(12)"
+  color 1 0 1
+  radius 0.025
+}
+Ball {
+  translation 0.590827 0.0625 -4.67817
+  name "ball(14)"
+  color 1 0 1
+  radius 0.025
+}
+Ball {
+  translation 0.528364 0.0625 -5.4827
+  name "ball(13)"
+  color 1 0 1
+  radius 0.025
+}
+Ball {
+  translation -0.266303 0.1025 -5.11624
   name "ball(4)"
   color 1 0 0
   radius 0.025
 }
 Ball {
-  translation -0.0978456 0.1225 -4.55816
+  translation 0.321173 0.1225 -4.81613
   name "ball(5)"
   color 1 0 0
   radius 0.025
 }
 Solid {
-  translation -0.935811 1.11022e-16 0.268907
+  translation 0.251567 -2.9976e-15 6.23771
+  rotation 0 1 0 1.5707996938995747
+  scale 5 5 5
   children [
     Solid {
       translation 0 0.1 -0.1
@@ -1386,4 +1459,75 @@ Solid {
       boundingObject USE tiang_a
     }
   ]
+}
+Fridge {
+  translation -1.64246 -8.88178e-16 -5.14909
+}
+Oven {
+  hidden translation_1 0.25 -0.15 0
+  translation -1.49951 0.34 -4.57972
+}
+Oven {
+  hidden translation_1 0.25 -0.15 0
+  translation -1.49951 0.34 -4.14972
+  name "oven(1)"
+}
+HotPlate {
+  translation -1.52629 0.65 -4.02862
+}
+Cookware {
+  translation -1.53158 0.68 -4.19253
+}
+Sink {
+  translation -1.5825 0.72 -4.57582
+  rotation 0 1 0 -1.5707953071795862
+}
+Armchair {
+  translation 0.0982496 -2.22045e-15 0.250728
+}
+Pedestrian {
+  translation 0.778714 1.27 0.201645
+  rotation 0 1 0 1.5708
+  shirtColor 1 1 0
+}
+Pedestrian {
+  translation 1.73336 1.27 4.6472
+  rotation 0 1 0 -1.3089953071795861
+  name "pedestrian(2)"
+  shirtColor 0 1 0
+}
+Pedestrian {
+  translation -1.39055 1.27 -3.51269
+  rotation 0 1 0 -3.1415853071795863
+  name "pedestrian(1)"
+  shirtColor 1 0 0.2
+}
+Television {
+  translation 1.77218 1.5000000000000002 0.221165
+  rotation 0 1 0 -1.5707953071795862
+}
+FloorLight {
+  translation -0.255556 5.32907e-15 -0.355496
+}
+Gnome {
+  translation -1.52581 -3.55271e-15 4.70072
+  rotation 0 1 0 -1.047195307179586
+}
+BunchOfSunFlowers {
+  translation 0.727842 1.77636e-15 -3.74347
+}
+BunchOfSunFlowers {
+  translation -0.205918 1.77636e-15 -3.78927
+  name "bunch of sunflowers(1)"
+}
+PottedTree {
+  translation -0.488147 0 4.50142
+}
+PottedTree {
+  translation 0.973914 -1.77636e-15 4.45776
+  name "potted tree(1)"
+}
+RobotisOp3 {
+  translation 0.247211 0.300017 5.99246
+  rotation -0.5773509358560258 0.577349935856137 0.577349935856137 2.09439
 }
