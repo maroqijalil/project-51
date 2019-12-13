@@ -287,7 +287,7 @@ int main(int argc, char **argv) {
   double p_a=0, p_b=0;
   int penanda_putar=0;
   int putar=0;
-  int p=0, p2=0;
+  int p=0, p2=0, p3=0;
   int ukuran;
   int jalan=0, penanda_jalan=0;
   int p_kiri, p_kanan, p_bawah;
@@ -347,7 +347,7 @@ int main(int argc, char **argv) {
   
   while (robot->step(TIME_STEP) != -1) {
     img = cam->getImage();
-    p_bawah=0; p2=0; p=0;
+    p_bawah=0; p2=0; p3=0;
     posisi(img, ukuran, &p_kiri, &p_kanan, &p_bawah);
     
     leftSpeed = 3.0;
@@ -358,20 +358,7 @@ int main(int argc, char **argv) {
         penanda_jalan=1;
         p=i;
         p2++;
-        //jalan =1;
       }
-    }
-    if(ds[p]->getValue() >= 1000.0 && penanda_jalan==1){
-      leftSpeed = -ban_kiri;
-      rightSpeed = -ban_kanan;
-      ban_kiri = 2.0;
-      ban_kanan = -2.0;
-      if(p==3) p=1;
-      if(p==4) p=0;
-      p2++;
-    } else {
-      leftSpeed = 3.0;
-      rightSpeed = 3.0;
     }
     
     for (int i = 0; i < 2; i++) {
@@ -379,15 +366,23 @@ int main(int argc, char **argv) {
         leftSpeed = ban_kiri;
         rightSpeed = ban_kanan;
         p2++;
+        p=0;
+        p3=1;
         //jalan =1;
       }
     }
     
-    if(p2==0){
-      leftSpeed = 3.0;
-      rightSpeed = 3.0;
+    if(p2==0&&p3==0){
+      if(p==4){
+        leftSpeed = -2.0;
+        rightSpeed = 2.0;
+      } else if(p==3){
+        leftSpeed = 2.0;
+        rightSpeed = -2.0;
+      }
     }
-    cout << p << endl;
+    
+    cout << p << " " << p2 << endl;
     
     wheels[0]->setVelocity(leftSpeed);
     wheels[1]->setVelocity(rightSpeed);
